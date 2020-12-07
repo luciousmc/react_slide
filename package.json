@@ -1,0 +1,31 @@
+{
+  "name": "react_slide",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luciousmc/react_slide.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luciousmc/react_slide/issues"
+  },
+  "homepage": "https://github.com/luciousmc/react_slide#readme",
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/plugin-transform-react-jsx": "^7.12.7",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.10.0",
+    "webpack-cli": "^4.2.0"
+  }
+}
