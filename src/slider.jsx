@@ -1,8 +1,14 @@
 import React from 'react';
 
+import styled from 'styled-components';
+
+const SlideContainer = styled.div`
+  display: flex;
+`;
+
 const Slider = ({ children }) => {
   return (
-    <div className="slide-container">
+    <SlideContainer>
       {
         children.map((child,i) => {
           return (
@@ -10,7 +16,7 @@ const Slider = ({ children }) => {
           );
         })
       }
-    </div>
+    </SlideContainer>
   )
 }
 
