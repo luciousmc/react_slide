@@ -8,18 +8,22 @@ const Title = styled.h1`
   font-size: 3rem;
   text-shadow: 1px 1px 5px green;
   margin: 1.5rem auto;
-`
+`;
+
+const Img = styled.img`
+  width: 600px;
+`;
 
 const App = () => {
   return(
     <>
       <Title>React slide</Title>
       <Slider>
-        <img src="../images/image1.jpg" alt=""/>
-        <img src="../images/image2.jpg" alt=""/>
-        <img src="../images/image3.jpg" alt=""/>
-        <img src="../images/image4.jpg" alt=""/>
-        <img src="../images/image5.jpg" alt=""/>
+        <Img src="../images/image1.jpg" alt="Test Pictures"/>
+        <Img src="../images/image2.jpg" alt="Test Pictures"/>
+        <Img src="../images/image3.jpg" alt="Test Pictures"/>
+        <Img src="../images/image4.jpg" alt="Test Pictures"/>
+        <Img src="../images/image5.jpg" alt="Test Pictures"/>
       </Slider>
     </>
   );
