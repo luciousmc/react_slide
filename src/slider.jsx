@@ -43,7 +43,7 @@ const RightArrow = styled(Arrow)`
 /**
  * Slider Component 
  */
-function Slider({ children, width }) {
+function Slider({ children, width = 600 }) {
   const first = children[0];
   const last = children[children.length - 1];
   const imgArr = [last, ...children, first];
@@ -51,20 +51,26 @@ function Slider({ children, width }) {
   const reelRef = useRef(null);
   let slideCount = 1;
 
-  useEffect(() => {
-    reelRef.current.addEventListener('transitionend', () => {
-      if (slideCount === 0) {
-        reelRef.current.style.transition = 'none';
-        slideCount = imgArr.length - 2;
-        reelRef.current.style.transform = `translateX(${-width * slideCount}px)`;
-      }
+  const seamlessScroll = () => {
+    if (slideCount === 0) {
+      reelRef.current.style.transition = 'none';
+      slideCount = imgArr.length - 2;
+      reelRef.current.style.transform = `translateX(${-width * slideCount}px)`;
+    }
 
-      if (slideCount === imgArr.length - 1) {
-        reelRef.current.style.transition = 'none';
-        slideCount = 1;
-        reelRef.current.style.transform = `translateX(${-width * slideCount}px)`;
-      }
-    })
+    if (slideCount === imgArr.length - 1) {
+      reelRef.current.style.transition = 'none';
+      slideCount = 1;
+      reelRef.current.style.transform = `translateX(${-width * slideCount}px)`;
+    }
+  }
+
+  useEffect(() => {
+    reelRef.current.addEventListener('transitionend', seamlessScroll);
+
+    return () => {
+      reelRef.current.removeEventListener('transitionend', seamlessScroll);
+    }
   }, []);
 
   const nextSlide = () => {
@@ -73,7 +79,6 @@ function Slider({ children, width }) {
     reelRef.current.style.transition = 'transform .4s ease-in-out';
     slideCount++;
     reelRef.current.style.transform = `translateX(${-width * slideCount}px)`;
-    console.table({slideCount})
   };
 
   const prevSlide = () => {
@@ -82,7 +87,6 @@ function Slider({ children, width }) {
     reelRef.current.style.transition = 'transform .4s ease-in-out';
     slideCount--;
     reelRef.current.style.transform = `translateX(${-width * slideCount}px)`;
-    console.table({slideCount});
   };
 
   return (
@@ -101,10 +105,5 @@ function Slider({ children, width }) {
     </SlideContainer>
   )
 };
-
-Slider.defaultProps = {
-  children: [],
-  width: 600
-}
 
 export default Slider;
